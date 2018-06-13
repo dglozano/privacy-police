@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import java.net.URL?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="ChatFXMLController"
+            prefHeight="540.0" prefWidth="960.0">
+    <top>
+        <BorderPane styleClass="header-section">
+            <left>
+                <Text styleClass="header-text" text="Privacy Police" BorderPane.alignment="CENTER"/>
+            </left>
+            <right>
+                <ImageView fitHeight="40" pickOnBounds="true" preserveRatio="true" styleClass="utn-logo" BorderPane.alignment="CENTER">
+                    <image>
+                        <Image url="@img/logo.png" />
+                    </image>
+                </ImageView>
+            </right>
+        </BorderPane>
+    </top>
+    <stylesheets>
+        <URL value="@Styles.css" />
+    </stylesheets>
+</BorderPane>

@@ -1,0 +1,70 @@
+@font-face {
+    font-family: Montserrat;
+    src: url('fonts/Montserrat-Black.ttf');
+}
+
+.root{
+    -fx-font-family: 'Montserrat';
+}
+
+.borderless {
+    -fx-background-color:transparent;
+}
+
+.header {
+    -fx-padding: 20px;
+    -fx-font-size: 26px;
+    -fx-background-color: #1D3247;
+    -fx-effect: dropshadow(three-pass-box, #1D3247, 20, 0, 0, 0);
+}
+
+.footer {
+    -fx-padding: 20px;
+    -fx-background-color: #FFFFFF;
+}
+
+Button {
+    -fx-background-color: #1D3247;
+    -fx-text-fill: #fff;
+    -fx-pref-width: 130px;
+    -fx-pref-height: 40px;
+    -fx-tab-color: #2D639A;
+    -fx-focus-color: #2D639A;
+    -fx-faint-focus-color: #2D639A;
+    -fx-cursor: hand;
+    -fx-font-size: 16px;
+    -fx-border-width: 2;
+    -fx-border-radius: 5;
+    -fx-border-color: #1D3247;
+    -fx-background-insets: 2px;
+}
+
+Button:hover{
+    -fx-background-color: #2D639A;
+    -fx-border-color: #2D639A;
+}
+
+.combo-box-base {
+    -fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, white;
+    -fx-background-insets: 2;
+    -fx-background-radius: 3px, 3px, 2px, 1px;
+    -fx-pref-height: 30;
+    -fx-border-width: 2;
+    -fx-border-radius: 5;
+    -fx-border-color: #afafaf;
+}
+
+.combo-box-base:focused {
+    -fx-border-color: #2D639A;
+    -fx-effect: dropshadow(three-pass-box, #ababab, 20, 0, 0, 0);
+}
+
+.input-text {
+    -fx-font-size: 16px;
+    -fx-pref-height: 30px;
+    -fx-text-fill: #1D3247;
+}
+
+.input-text:focused{
+    -fx-border-color: #2D639A;
+}
