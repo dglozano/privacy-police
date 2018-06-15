@@ -31,7 +31,7 @@ public class Main extends Application {
 
         //Obtengo un nodo Parent desde el archivo FXML usando un FXMLLoader
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("ChatFXML.fxml"));
+        loader.setLocation(getClass().getResource("fxml/ChatFXML.fxml"));
         Parent fileChooserView = loader.load();
 
         //Creo la escena inicial (y unica escena en este caso) con el nodo Parent creado a partir del FXML

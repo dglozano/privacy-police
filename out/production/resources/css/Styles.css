@@ -1,6 +1,6 @@
 @font-face {
     font-family: Montserrat;
-    src: url('fonts/Montserrat-Black.ttf');
+    src: url('../fonts/Montserrat-Black.ttf');
 }
 
 .root{
@@ -68,3 +68,22 @@ Button:hover{
 .input-text:focused{
     -fx-border-color: #2D639A;
 }
+
+.chat-label{
+    -fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, rgba(0, 166, 228, 0.22);
+    -fx-border-color: #1D3247;
+    -fx-background-insets: 2;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 3px, 3px, 2px, 1px;
+    -fx-padding: 10px;
+}
+
+.chat-container{
+    -fx-padding: 10px;
+}
+
+.logger {
+    -fx-padding: 15px;
+    -fx-font-size: 12;
+}
+
