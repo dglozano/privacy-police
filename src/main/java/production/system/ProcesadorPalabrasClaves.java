@@ -9,21 +9,11 @@ public class ProcesadorPalabrasClaves {
     //El set de palabras claves seria la memoria de trabajo
     public Set<String> getPalabrasClaves(String fraseOriginal){
 
-        System.out.println("Frase original: " + fraseOriginal);
         String frasePreprocesada = preprocesar(fraseOriginal);
-        System.out.println("Frase preprocesada: " + frasePreprocesada);
 
         //HashSet es mas eficiente que una lista y asegura que las palabras claves no esten duplicadas
         Set<String> palabrasClaves = new HashSet<String>();
         String[] palabras = frasePreprocesada.split(" ");
-
-        //FIXME reemplazar por log
-        StringBuilder sb = new StringBuilder();
-        sb.append("Palabras: ");
-        for(String pc: palabras){
-            sb.append(pc + " ");
-        }
-        System.out.println(sb.toString());
 
         for (String palabra : palabras) {
             //TODO: BUSCAR SINONIMOS Y PASAR VERBOS AL INFINITIVO
@@ -57,14 +47,6 @@ public class ProcesadorPalabrasClaves {
                     break;
             }
         }
-        //FIXME reemplazar por log
-        StringBuilder sb2 = new StringBuilder();
-        sb2.append("Palabras claves: ");
-        for(String pc: palabrasClaves){
-            sb2.append(pc + " ");
-        }
-        System.out.println(sb2.toString());
-
         return palabrasClaves;
     }
 

@@ -1,4 +1,4 @@
-package ui.chatutils;
+package ui.chat;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -47,8 +47,7 @@ public class MessageData {
         }
     }
 
-    public HBox getBox()
-    {
+    public HBox getBox() {
         return chatItemHBox;
     }
 }

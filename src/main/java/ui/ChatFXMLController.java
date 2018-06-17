@@ -1,5 +1,8 @@
 package ui;
 
+import javafx.scene.control.SplitPane;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import production.system.MemoriaDeProduccion;
 import production.system.Regla;
 import javafx.application.Platform;
@@ -8,18 +11,20 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import production.system.SistemaDeProduccion;
 import production.system.criteria.*;
-import ui.chatutils.ChatMessageCell;
-import ui.chatutils.MessagePOJO;
+import ui.chat.ChatMessageCell;
+import ui.chat.MessagePOJO;
+import ui.logger.ArchiveLogger;
+import ui.logger.LogEntry;
+import ui.logger.LogEntryCell;
 
 
+import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -28,12 +33,15 @@ public class ChatFXMLController implements Initializable {
     @FXML
     private TextField msgInput;
     @FXML
-    private ListView chatListView;
+    private ListView<MessagePOJO> chatListView;
     @FXML
-    private Label logsView;
+    private ListView<LogEntry> logsListView;
 
     private ObservableList<MessagePOJO> mensajesChatList;
+    private ArchiveLogger logger;
     private SistemaDeProduccion sistemaDeProduccion;
+
+    private Stage primaryStage;
 
     @FXML
     private void send(ActionEvent event) {
@@ -51,22 +59,16 @@ public class ChatFXMLController implements Initializable {
         // Obtengo del sistema de producciones la respuesta del agente
         String respuestaAgente = sistemaDeProduccion.getAccionAgente(fraseCarToy);
 
-        // TODO: escribir en el log
-        //FIXME: BORRAR LUEGO
-        logsView.setText(logsView.getText() + "\nEscribir log de lo que hizo el agente");
-        logsView.setText(logsView.getText() + "\nHizo esto");
-        logsView.setText(logsView.getText() + "\ny esto");
-        logsView.setText(logsView.getText() + "\ny responde esto");
-
         // Muestro la respueta del agente
         mensajesChatList.add(new MessagePOJO(respuestaAgente, MessagePOJO.TipoMensaje.RESPUESTA_AGENTE));
 
         //Scrollea hasta abajo cuando se agrega un mensaje
         Platform.runLater( () -> chatListView.scrollTo(mensajesChatList.size()-1));
+        Platform.runLater( () -> logsListView.scrollTo(logger.getObservableListLogs().size()-1));
     }
 
-    public void setListView() {
-
+    public void setPrimaryStage(Stage primaryStage) {
+        this.primaryStage = primaryStage;
     }
 
     @Override
@@ -74,10 +76,27 @@ public class ChatFXMLController implements Initializable {
         //Seteo ListView del chat
         mensajesChatList = FXCollections.observableArrayList();
         chatListView.setItems(mensajesChatList);
-        chatListView.setCellFactory((listView -> new ChatMessageCell()));
+        chatListView.setCellFactory(listView -> new ChatMessageCell());
 
-        //FIXME: Inicializo log
-        logsView.setText("Inicializando simluador ... \n");
+        //Selecciono un archivo donde guardar los logs y se lo seteo al ArchiveLogger
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Selecciona donde guardar el archivo de log de la simulacion");
+        File logFile = fileChooser.showSaveDialog(primaryStage);
+        //Si no selecciona archivo sale del programa
+        if(logFile == null){
+            Platform.exit();
+            return;
+        }
+        //Si ya existe un archivo con ese nombre lo borra
+        if(logFile.exists()) {
+            logFile.delete();
+        }
+        logger = new ArchiveLogger(logFile);
+        logger.addLog(new LogEntry("Iniciando simulador..."));
+
+        //Inicializo vista logs
+        logsListView.setItems(logger.getObservableListLogs());
+        logsListView.setCellFactory(listView ->  new LogEntryCell());
 
         //Pongo foco en el input
         Platform.runLater( () -> msgInput.requestFocus());
@@ -94,7 +113,7 @@ public class ChatFXMLController implements Initializable {
         criterias.add(new Specifity());
         criterias.add(new Random());
 
-        //Obtengo un SistemaDeProduccion con mis reglas y criterias
-        sistemaDeProduccion = new SistemaDeProduccion(reglas, criterias);
+        //Obtengo un SistemaDeProduccion con mis reglas y criterias. Le seteo un logger.
+        sistemaDeProduccion = new SistemaDeProduccion(reglas, criterias, logger);
     }
 }

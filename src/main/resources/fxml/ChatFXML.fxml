@@ -3,7 +3,6 @@
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
@@ -34,20 +33,20 @@
         </BorderPane>
     </top>
     <center>
-        <SplitPane dividerPositions="0.7" BorderPane.alignment="CENTER">
+        <SplitPane fx:id="splitPane" dividerPositions="0.95" orientation="VERTICAL" BorderPane.alignment="CENTER">
             <items>
-                  <ListView fx:id="chatListView" maxWidth="1.7976931348623157E308" minWidth="400.0" />
-                  <Label fx:id="logsView" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="100.0" styleClass="logger" wrapText="true" />
+                  <ListView fx:id="chatListView" maxWidth="1.7976931348623157E308" minHeight="10.0" />
+                  <ListView fx:id="logsListView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="10.0" styleClass="logger" />
             </items>
         </SplitPane>
     </center>
    <bottom>
       <BorderPane styleClass="footer">
          <right>
-            <Button fx:id="botonAceptar" mnemonicParsing="false" onAction="#send" text="SEND" BorderPane.alignment="CENTER" />
+            <Button fx:id="botonAceptar" mnemonicParsing="false" onAction="#send" text="ENVIAR" BorderPane.alignment="CENTER" />
          </right>
          <left>
-            <TextField fx:id="msgInput" onAction="#send" prefHeight="35.0" prefWidth="600.0" promptText="Enter what the Smart Car Toy will say..." BorderPane.alignment="CENTER" />
+            <TextField fx:id="msgInput" onAction="#send" prefHeight="35.0" prefWidth="600.0" promptText="Ingresa lo que el CarToy va a decir..." BorderPane.alignment="CENTER" />
          </left>
       </BorderPane>
    </bottom>
