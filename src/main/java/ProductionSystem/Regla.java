@@ -1,11 +1,12 @@
 package ProductionSystem;
 
-import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Regla {
 
     private int id;
-    private ArrayList<String> palabrasClaves;
+    private Set<String> palabrasClaves;
     private String accion;
     private int novedad;
     private int especificidad;
@@ -22,9 +23,12 @@ public class Regla {
         this.fueEjecutada = fueEjecutada;
     }
 
-    //Método para separar el string de palabras claves y cargar cada palabra en el atributo de clase de tipo ArrayList
-    private ArrayList cargarPClaves (String palabrasClaves){
-        ArrayList pClaves = new ArrayList<String>();
+    /**
+     *  Método para separar el string de palabras claves y cargar cada palabra en el
+     *  atributo de clase de tipo Set
+     */
+    private Set<String> cargarPClaves (String palabrasClaves){
+        Set<String> pClaves = new HashSet<>();
         String[] palabras = palabrasClaves.split("-");
         for(String palabra : palabras){
             if(!palabra.isEmpty())
@@ -41,11 +45,11 @@ public class Regla {
         this.id = id;
     }
 
-    public ArrayList getPalabrasClaves() {
+    public Set<String> getPalabrasClaves() {
         return palabrasClaves;
     }
 
-    public void setPalabrasClaves(ArrayList palabrasClaves) {
+    public void setPalabrasClaves(Set<String> palabrasClaves) {
         this.palabrasClaves = palabrasClaves;
     }
 
