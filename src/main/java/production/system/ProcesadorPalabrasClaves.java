@@ -16,6 +16,15 @@ public class ProcesadorPalabrasClaves {
         //HashSet es mas eficiente que una lista y asegura que las palabras claves no esten duplicadas
         Set<String> palabrasClaves = new HashSet<String>();
         String[] palabras = frasePreprocesada.split(" ");
+
+        //FIXME reemplazar por log
+        StringBuilder sb = new StringBuilder();
+        sb.append("Palabras: ");
+        for(String pc: palabras){
+            sb.append(pc + " ");
+        }
+        System.out.println(sb.toString());
+
         for (String palabra : palabras) {
             //TODO: BUSCAR SINONIMOS Y PASAR VERBOS AL INFINITIVO
             switch (palabra){
@@ -48,20 +57,22 @@ public class ProcesadorPalabrasClaves {
                     break;
             }
         }
-        StringBuilder sb = new StringBuilder();
-        sb.append("Palabras claves: ");
+        //FIXME reemplazar por log
+        StringBuilder sb2 = new StringBuilder();
+        sb2.append("Palabras claves: ");
         for(String pc: palabrasClaves){
-            sb.append(pc + "  ");
+            sb2.append(pc + " ");
         }
-        System.out.println(sb.toString());
+        System.out.println(sb2.toString());
+
         return palabrasClaves;
     }
 
 
     private String preprocesar(String frase) {
 
-        //Elimina tabulaciones y espacios dobles
-        String frasePreprocesada = frase.trim();
+        //Elimina espacios al principio y al final (trim) y si hay mas de uno en el medio deja solo uno.
+        String frasePreprocesada = frase.trim().replaceAll(" +"," ");
 
         //Convierte caracteres especiales a estandares
         frasePreprocesada = Normalizer

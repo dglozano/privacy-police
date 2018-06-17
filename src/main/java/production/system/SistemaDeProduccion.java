@@ -24,6 +24,11 @@ public class SistemaDeProduccion {
         ProcesadorPalabrasClaves ppc = new ProcesadorPalabrasClaves();
         Set<String> palabrasClaves = ppc.getPalabrasClaves(fraseDelCarToy);
 
+        //Si no hay palabras claves en el mensaje muestro este mensaje
+        if(palabrasClaves.isEmpty()) {
+            return "Lo siento, no he entendido lo que dijo el juguete.";
+        }
+
         //Obtengo la lista de reglas activas (fase de cotejo)
         List<Regla> reglasActivas = matchear(palabrasClaves, reglas);
 
@@ -57,6 +62,7 @@ public class SistemaDeProduccion {
 
     public Regla resolverConflictos(List<Regla> reglasActivas) {
 
+        //FIXME borrar system outs cuando este listo el logger
         Regla reglaSeleccionada = null;
         System.out.println("Reglas Activas: " + reglasActivas);
         //Aplica todas las criterias hasta quedarse con una unica regla candidata

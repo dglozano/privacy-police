@@ -65,23 +65,19 @@ public class ChatFXMLController implements Initializable {
         Platform.runLater( () -> chatListView.scrollTo(mensajesChatList.size()-1));
     }
 
-    public void setListView()
-    {
-        mensajesChatList.add(new MessagePOJO("Hola como te llamas? sadfasdfasdafsadfasdf sadf sdafsad daf sadfasdf sdaf adfsa f asdfsda safd ",
-                MessagePOJO.TipoMensaje.CARTOY));
-        mensajesChatList.add(new MessagePOJO("no estas obligado a decir  sdafasd fsaf sdaf saf sad fsadf sad fsad sadfsadf sad sf df af asd af saeso",
-                MessagePOJO.TipoMensaje.RESPUESTA_AGENTE));
+    public void setListView() {
 
-        chatListView.setItems(mensajesChatList);
-        chatListView.setCellFactory((listView -> new ChatMessageCell()));
-        logsView.setText("Inicializando simluador ... \n");
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //Seteo Listviews.
+        //Seteo ListView del chat
         mensajesChatList = FXCollections.observableArrayList();
-        setListView();
+        chatListView.setItems(mensajesChatList);
+        chatListView.setCellFactory((listView -> new ChatMessageCell()));
+
+        //FIXME: Inicializo log
+        logsView.setText("Inicializando simluador ... \n");
 
         //Pongo foco en el input
         Platform.runLater( () -> msgInput.requestFocus());
