@@ -1,22 +1,21 @@
 package ui;
 
-import ProductionSystem.Regla;
-import ProductionSystem.utils.SeleccionRegla;
+import production.system.MemoriaDeProduccion;
+import production.system.Regla;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import production.system.SistemaDeProduccion;
+import production.system.criteria.*;
 import ui.chatutils.ChatMessageCell;
 import ui.chatutils.MessagePOJO;
-import ProductionSystem.utils.ProcesaEntrada;
-import ProductionSystem.utils.ObtencionReglas;
-import ProductionSystem.utils.SeleccionRegla;
+
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -27,101 +26,75 @@ import java.util.ResourceBundle;
 public class ChatFXMLController implements Initializable {
 
     @FXML
-    private Button botonAceptar;
-    @FXML
     private TextField msgInput;
     @FXML
     private ListView chatListView;
     @FXML
     private Label logsView;
 
-    List<Regla> reglasTotales = ObtencionReglas.obtenerTodas();                                           //Obtengo todas las reglas existentes
-    String[] criterios = {"noDuplicacion", "novedad", "especificidad", "prioridad", "aleatorio"};
-
-    ObservableList<MessagePOJO> mensajesChatList = FXCollections.observableArrayList();
+    private ObservableList<MessagePOJO> mensajesChatList;
+    private SistemaDeProduccion sistemaDeProduccion;
 
     @FXML
-    private void send(ActionEvent event){
-        String input = msgInput.getText().toUpperCase();
+    private void send(ActionEvent event) {
+        // Obtengo la frase del cartoy desde el input
+        String fraseCarToy = msgInput.getText();
         msgInput.clear();
-        if(input.isEmpty())
+
+        // Si es un mensaje en blanco no lo proceso
+        if(fraseCarToy.trim().isEmpty())
             return;
-        mensajesChatList.add(new MessagePOJO(input, MessagePOJO.TipoMensaje.CARTOY));
 
-        //TOMAR ENTRADA Y GENERAR PALABRAS CLAVES:
-        ArrayList palabrasClaves = ProcesaEntrada.encuentraPalabrasClaves(input);
-        //FIXME: BORRAR LUEGO
-        System.out.println("*Palabras claves: ");
-        Iterator it = palabrasClaves.iterator();
-        while (it.hasNext()) {
-            System.out.println(it.next());
-        }
+        // Muestro en pantalla el mensaje del cartoy
+        mensajesChatList.add(new MessagePOJO(fraseCarToy, MessagePOJO.TipoMensaje.CARTOY));
 
+        // Obtengo del sistema de producciones la respuesta del agente
+        String respuestaAgente = sistemaDeProduccion.getAccionAgente(fraseCarToy);
 
-        //TOMAR PALABRAS CLAVES Y OBTENER REGLAS CANDIDATAS (ACTIVAS):
-        List<Regla> reglasActivas = null;
-        if(!palabrasClaves.isEmpty()) {
-            reglasActivas = ObtencionReglas.obtenerActivas(palabrasClaves, reglasTotales);                   //Fase de cotejo
-
-            //FIXME: BORRAR LUEGO
-            System.out.println("*Acciones de las reglas candidatas: ");
-            Iterator it2 = reglasActivas.iterator();
-            while (it2.hasNext()) {
-                Regla regla = (Regla) it2.next();
-                System.out.println(regla.getAccion());
-            }
-        } else{
-            System.out.println("La frase ingresada no pertenece al Smart Toy “Hello Barbie” ");
-        }
-
-        //TOMAR LAS REGLAS CANDIDATAS Y SELECCIONAR UNA MEDIANTE UNO DE LOS CRITERIOS
-        Regla reglaSeleccionada = null;
-        if (reglasActivas != null) {
-            if (!reglasActivas.isEmpty()) {
-                reglaSeleccionada = SeleccionRegla.seleccionarRegla(reglasActivas, criterios);
-
-                //FIXME: BORRAR LUEGO
-                System.out.println("*Acción de las regla seleccionada: ");
-                System.out.println(reglaSeleccionada.getAccion());
-            }else {
-                System.out.println("No se encontraron reglas para esta frase");
-            }
-        }
-
-        // escribir en el log
-        // observableList.add(new MessagePOJO(respuestaAgente, MessagePOJO.TipoMensaje.RESPUESTA_AGENTE));
+        // TODO: escribir en el log
         //FIXME: BORRAR LUEGO
         logsView.setText(logsView.getText() + "\nEscribir log de lo que hizo el agente");
         logsView.setText(logsView.getText() + "\nHizo esto");
         logsView.setText(logsView.getText() + "\ny esto");
         logsView.setText(logsView.getText() + "\ny responde esto");
 
-        mensajesChatList.add(new MessagePOJO("Esta es una respuesta mock", MessagePOJO.TipoMensaje.RESPUESTA_AGENTE));
+        // Muestro la respueta del agente
+        mensajesChatList.add(new MessagePOJO(respuestaAgente, MessagePOJO.TipoMensaje.RESPUESTA_AGENTE));
 
         //Scrollea hasta abajo cuando se agrega un mensaje
         Platform.runLater( () -> chatListView.scrollTo(mensajesChatList.size()-1));
     }
 
-    public void setListView()
-    {
-        mensajesChatList.add(new MessagePOJO("Hola como te llamas? sadfasdfasdafsadfasdf sadf sdafsad daf sadfasdf sdaf adfsa f asdfsda safd ",
-                MessagePOJO.TipoMensaje.CARTOY));
-        mensajesChatList.add(new MessagePOJO("no estas obligado a decir  sdafasd fsaf sdaf saf sad fsadf sad fsad sadfsadf sad sf df af asd af saeso",
-                MessagePOJO.TipoMensaje.RESPUESTA_AGENTE));
+    public void setListView() {
 
-        chatListView.setItems(mensajesChatList);
-        chatListView.setCellFactory((listView -> new ChatMessageCell()));
-        logsView.setText("Inicializando simluador ... \n");
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        setListView();
+        //Seteo ListView del chat
+        mensajesChatList = FXCollections.observableArrayList();
+        chatListView.setItems(mensajesChatList);
+        chatListView.setCellFactory((listView -> new ChatMessageCell()));
 
-        //Que tenga foco el input
+        //FIXME: Inicializo log
+        logsView.setText("Inicializando simluador ... \n");
+
+        //Pongo foco en el input
         Platform.runLater( () -> msgInput.requestFocus());
+
+        //Obtengo todas las reglas precargadas
+        List<Regla> reglas = MemoriaDeProduccion.getReglas();
+
+        //Creo la lista de criterias a usar. Para resolver los conflictos se usan todas.
+        //Es importante el orden (NoDuplicacion es la primera en usarse y Random la ultima).
+        List<Criteria> criterias = new ArrayList<>();
+        criterias.add(new NoDuplication());
+        criterias.add(new Priority());
+        criterias.add(new Novelty());
+        criterias.add(new Specifity());
+        criterias.add(new Random());
+
+        //Obtengo un SistemaDeProduccion con mis reglas y criterias
+        sistemaDeProduccion = new SistemaDeProduccion(reglas, criterias);
     }
-
-
-
 }
