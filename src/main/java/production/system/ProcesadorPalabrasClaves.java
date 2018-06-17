@@ -4,14 +4,18 @@ import java.text.Normalizer;
 import java.util.HashSet;
 import java.util.Set;
 
-public class ProcesaEntrada {
+public class ProcesadorPalabrasClaves {
 
-    public static Set<String> encuentraPalabrasClaves(String fraseOriginal){
+    //El set de palabras claves seria la memoria de trabajo
+    public Set<String> getPalabrasClaves(String fraseOriginal){
 
-        String fraseLimpia = limpiarFrase(fraseOriginal);
+        System.out.println("Frase original: " + fraseOriginal);
+        String frasePreprocesada = preprocesar(fraseOriginal);
+        System.out.println("Frase preprocesada: " + frasePreprocesada);
+
         //HashSet es mas eficiente que una lista y asegura que las palabras claves no esten duplicadas
         Set<String> palabrasClaves = new HashSet<String>();
-        String[] palabras = fraseLimpia.split(" ");
+        String[] palabras = frasePreprocesada.split(" ");
         for (String palabra : palabras) {
             //TODO: BUSCAR SINONIMOS Y PASAR VERBOS AL INFINITIVO
             switch (palabra){
@@ -44,20 +48,33 @@ public class ProcesaEntrada {
                     break;
             }
         }
+        StringBuilder sb = new StringBuilder();
+        sb.append("Palabras claves: ");
+        for(String pc: palabrasClaves){
+            sb.append(pc + "  ");
+        }
+        System.out.println(sb.toString());
         return palabrasClaves;
     }
 
 
-    private static String limpiarFrase(String frase) {
-        //Elimina tabulaciones y espacios dobles
-        frase = frase.trim();
-        //Convierte caracteres especiales a estandares
-        String resultado = Normalizer
-                .normalize(frase, Normalizer.Form.NFD)
-                .replaceAll("[^\\p{ASCII}]", "");
-        //Antes de retornar la frase sin acentos, le saca los caracteres especiales (puntuación, interrogación, etc)
-        return resultado.replaceAll("[^\\dA-Za-z ]", "");
-    }
+    private String preprocesar(String frase) {
 
+        //Elimina tabulaciones y espacios dobles
+        String frasePreprocesada = frase.trim();
+
+        //Convierte caracteres especiales a estandares
+        frasePreprocesada = Normalizer
+                .normalize(frasePreprocesada, Normalizer.Form.NFD)
+                .replaceAll("[^\\p{ASCII}]", "");
+
+        //Le saca los caracteres especiales (puntuación, interrogación, etc)
+        frasePreprocesada = frasePreprocesada.replaceAll("[^\\dA-Za-z ]", "");
+
+        //La pone en mayuscula
+        frasePreprocesada = frasePreprocesada.toUpperCase();
+
+        return frasePreprocesada;
+    }
 }
 

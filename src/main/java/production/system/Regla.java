@@ -11,17 +11,15 @@ public class Regla {
     private int novedad;
     private int especificidad;
     private int prioridad;
-    private boolean fueEjecutada;
 
     public Regla(int id, String palabrasClaves, String accion, int novedad, int especificidad,
-                 int prioridad, boolean fueEjecutada) {
+                 int prioridad) {
         this.id = id;
         this.palabrasClaves = cargarPClaves(palabrasClaves);
         this.accion = accion;
         this.novedad = novedad;
         this.especificidad = especificidad;
         this.prioridad = prioridad;
-        this.fueEjecutada = fueEjecutada;
     }
 
     /**
@@ -86,11 +84,27 @@ public class Regla {
         this.prioridad = prioridad;
     }
 
-    public boolean isFueEjecutada() {
-        return fueEjecutada;
+    @Override
+    public boolean equals(Object o) {
+        if (o == this) return true;
+        if (!(o instanceof Regla)) {
+            return false;
+        }
+
+        Regla otraRegla = (Regla) o;
+
+        return otraRegla.id == this.id;
     }
 
-    public void setFueEjecutada(boolean fueEjecutada) {
-        this.fueEjecutada = fueEjecutada;
+    @Override
+    public String toString(){
+        StringBuilder sb = new StringBuilder();
+        sb.append("[" + id + "] ");
+        for(String palabraClave: palabrasClaves){
+            sb.append(palabraClave + " ");
+        }
+        sb.append(" => ");
+        sb.append(accion);
+        return sb.toString();
     }
 }
