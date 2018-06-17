@@ -7,6 +7,7 @@ import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import ui.ChatFXMLController;
 
 import java.io.IOException;
 
@@ -34,6 +35,10 @@ public class Main extends Application {
         loader.setLocation(getClass().getResource("fxml/ChatFXML.fxml"));
         Parent fileChooserView = loader.load();
 
+        //Seteo stage al controllador
+        ChatFXMLController controller = (ChatFXMLController) loader.getController();
+        controller.setPrimaryStage(primaryStage);
+
         //Creo la escena inicial (y unica escena en este caso) con el nodo Parent creado a partir del FXML
         Scene initScene = new Scene(fileChooserView);
 
@@ -50,5 +55,10 @@ public class Main extends Application {
 
         //Seteo la escena cargadad desde el FXML al primary Stage
         primaryStage.setScene(initScene);
+    }
+
+    @Override
+    public void stop() {
+
     }
 }

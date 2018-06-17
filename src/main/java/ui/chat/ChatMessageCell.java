@@ -1,4 +1,4 @@
-package ui.chatutils;
+package ui.chat;
 
 import javafx.scene.control.ListCell;
 

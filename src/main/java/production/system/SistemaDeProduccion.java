@@ -1,6 +1,7 @@
 package production.system;
 
 import production.system.criteria.Criteria;
+import ui.logger.ArchiveLogger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,12 +11,14 @@ public class SistemaDeProduccion {
 
     private List<Criteria> criterias;
     private List<Regla> reglas;
+    private  ArchiveLogger logger;
     //Contiene la lista de reglas utilizadas. Sirve para el criterio de no duplicidad
     private static List<Regla> reglasUsadas = new ArrayList<>();
 
-    public SistemaDeProduccion(List<Regla> reglas, List<Criteria> criterias) {
+    public SistemaDeProduccion(List<Regla> reglas, List<Criteria> criterias, ArchiveLogger logger) {
         this.reglas = reglas;
         this.criterias = criterias;
+        this.logger = logger;
     }
 
     public String getAccionAgente(String fraseDelCarToy) {
