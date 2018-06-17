@@ -13,7 +13,8 @@ public class Regla {
     private int prioridad;
     private boolean fueEjecutada;
 
-    public Regla(int id, String palabrasClaves, String accion, int novedad, int especificidad, int prioridad, boolean fueEjecutada) {
+    public Regla(int id, String palabrasClaves, String accion, int novedad, int especificidad,
+                 int prioridad, boolean fueEjecutada) {
         this.id = id;
         this.palabrasClaves = cargarPClaves(palabrasClaves);
         this.accion = accion;

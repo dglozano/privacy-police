@@ -16,27 +16,33 @@ public class SeleccionRegla {
             reglaSeleccionada = reglasActivas.get(0);
         }else if(reglasActivas.size() > 1){
             int random = (int) (Math.random() * 5);
-            String criterio = criterios[random];                                                //Elijo uno de los 5 criterios al azar
+            //Elijo uno de los 5 criterios al azar
+            String criterio = criterios[random];
             List<Regla> auxiliar = new ArrayList<Regla>();
 
             switch (criterio) {
                 case "noDuplicacion":
-                    for(Regla regla : reglasActivas){                                           //Recorro todas las reglas candidatas; si no fue ejecutada nunca, la agrego a la lista auxiliar
+                    //Recorro todas las reglas candidatas; si no fue ejecutada nunca, la agrego a la lista auxiliar
+                    for(Regla regla : reglasActivas){
                         if (!regla.isFueEjecutada())
                             auxiliar.add(regla);
                     }
-                    if (auxiliar.size()==1)                                                     //Si queda una sola regla en la lista auxiliar, esa es la elegida (la única que nunca fue ejecutada)
+                    //Si queda una sola regla en la lista auxiliar, esa es la elegida (la única que nunca fue ejecutada)
+                    if (auxiliar.size()==1)
                         reglaSeleccionada =  auxiliar.get(0);
-                    else if (auxiliar.size() > 1)                                               //Si hay más de una que nunca fue ejecutada, selecciono al azar una de ellas
+                    //Si hay más de una que nunca fue ejecutada, selecciono al azar una de ellas
+                    else if (auxiliar.size() > 1)
                         reglaSeleccionada =  seleccionAlAzar (auxiliar);
-                    else if (auxiliar.size() == 0)                                              //Si todas las reglas candidatas ya fueron ejecutadas, selecciono cualquiera al azar
+                    //Si todas las reglas candidatas ya fueron ejecutadas, selecciono cualquiera al azar
+                    else if (auxiliar.size() == 0)
                         reglaSeleccionada =  seleccionAlAzar (reglasActivas);
                     break;
 
                 case "novedad":
                     reglaSeleccionada = reglasActivas.get(0);
                     for(Regla regla : reglasActivas){
-                        if (regla.getNovedad() > reglaSeleccionada.getNovedad())                //Recorro todas las reglas candidatas; y me quedo con la que tiene mayor valor en el atributo Novedad
+                        //Recorro todas las reglas candidatas; y me quedo con la que tiene mayor valor en el atributo Novedad
+                        if (regla.getNovedad() > reglaSeleccionada.getNovedad())
                             reglaSeleccionada = regla;
                     }
                     break;
@@ -44,16 +50,20 @@ public class SeleccionRegla {
                 case "especificidad":
                     int mayorEspecificidad = reglasActivas.get(0).getEspecificidad();
                     for(Regla regla : reglasActivas){
-                        if (regla.getEspecificidad() > mayorEspecificidad)                      //Recorro todas las reglas candidatas para encontrar el mayor valor del atributo Especificidad
+                        //Recorro todas las reglas candidatas para encontrar el mayor valor del atributo Especificidad
+                        if (regla.getEspecificidad() > mayorEspecificidad)
                             mayorEspecificidad = regla.getEspecificidad();
                     }
-                    for(Regla regla : reglasActivas){                                           //Vuelvo a recorrer todas las reglas candidatas, y me quedo con las que tienen ese maximo valor de especificidad
+                    //Vuelvo a recorrer todas las reglas candidatas, y me quedo con las que tienen ese maximo valor de especificidad
+                    for(Regla regla : reglasActivas){
                         if (regla.getEspecificidad() == mayorEspecificidad)
                             auxiliar.add(regla);
                     }
-                    if (auxiliar.size()==1)                                                     //Si queda una sola regla en la lista auxiliar, esa es la elegida (la única con valor máximo de especificidad)
+                    //Si queda una sola regla en la lista auxiliar, esa es la elegida (la única con valor máximo de especificidad)
+                    if (auxiliar.size()==1)
                         reglaSeleccionada =  auxiliar.get(0);
-                    else if (auxiliar.size() > 1)                                               //Si hay más de una con el máximo valor de especificidad, selecciono al azar una de ellas
+                    //Si hay más de una con el máximo valor de especificidad, selecciono al azar una de ellas
+                    else if (auxiliar.size() > 1)
                         reglaSeleccionada =  seleccionAlAzar (auxiliar);
 
                     break;
@@ -61,7 +71,8 @@ public class SeleccionRegla {
                 case "prioridad":
                     reglaSeleccionada = reglasActivas.get(0);
                     for(Regla regla : reglasActivas){
-                        if (regla.getPrioridad() > reglaSeleccionada.getPrioridad())            //Recorro todas las reglas candidatas; y me quedo con la que tiene mayor valor en el atributo Prioridad
+                        //Recorro todas las reglas candidatas; y me quedo con la que tiene mayor valor en el atributo Prioridad
+                        if (regla.getPrioridad() > reglaSeleccionada.getPrioridad())
                             reglaSeleccionada = regla;
                     }
                     break;
