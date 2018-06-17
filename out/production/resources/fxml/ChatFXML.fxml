@@ -33,10 +33,10 @@
         </BorderPane>
     </top>
     <center>
-        <SplitPane fx:id="splitPane" dividerPositions="0.6" BorderPane.alignment="CENTER">
+        <SplitPane fx:id="splitPane" dividerPositions="0.95" orientation="VERTICAL" BorderPane.alignment="CENTER">
             <items>
-                  <ListView fx:id="chatListView" maxWidth="1.7976931348623157E308" minWidth="380.0" />
-                  <ListView fx:id="logsListView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="200.0" styleClass="logger" />
+                  <ListView fx:id="chatListView" maxWidth="1.7976931348623157E308" minHeight="10.0" />
+                  <ListView fx:id="logsListView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="10.0" styleClass="logger" />
             </items>
         </SplitPane>
     </center>

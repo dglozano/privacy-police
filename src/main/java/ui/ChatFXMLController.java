@@ -1,8 +1,6 @@
 package ui;
 
-import javafx.scene.control.Button;
 import javafx.scene.control.SplitPane;
-import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import production.system.MemoriaDeProduccion;
@@ -22,7 +20,6 @@ import ui.chat.MessagePOJO;
 import ui.logger.ArchiveLogger;
 import ui.logger.LogEntry;
 import ui.logger.LogEntryCell;
-import ui.logger.PlainLogEntry;
 
 
 import java.io.File;
@@ -39,8 +36,6 @@ public class ChatFXMLController implements Initializable {
     private ListView<MessagePOJO> chatListView;
     @FXML
     private ListView<LogEntry> logsListView;
-    @FXML
-    private SplitPane splitPane;
 
     private ObservableList<MessagePOJO> mensajesChatList;
     private ArchiveLogger logger;
@@ -63,9 +58,6 @@ public class ChatFXMLController implements Initializable {
 
         // Obtengo del sistema de producciones la respuesta del agente
         String respuestaAgente = sistemaDeProduccion.getAccionAgente(fraseCarToy);
-
-        //FIXME
-        logger.addLog(new PlainLogEntry("Hizo esta accion " + respuestaAgente));
 
         // Muestro la respueta del agente
         mensajesChatList.add(new MessagePOJO(respuestaAgente, MessagePOJO.TipoMensaje.RESPUESTA_AGENTE));
@@ -100,7 +92,7 @@ public class ChatFXMLController implements Initializable {
             logFile.delete();
         }
         logger = new ArchiveLogger(logFile);
-        logger.addLog(new PlainLogEntry("Iniciando simulador..."));
+        logger.addLog(new LogEntry("Iniciando simulador..."));
 
         //Inicializo vista logs
         logsListView.setItems(logger.getObservableListLogs());

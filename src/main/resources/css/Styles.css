@@ -79,11 +79,17 @@ Button:hover{
 }
 
 .chat-container{
-    -fx-padding: 10px;
+    -fx-padding: 15px 30px;
 }
 
 .logger {
     -fx-padding: 15px;
     -fx-font-size: 12;
 }
+
+.split-pane *.split-pane-divider {
+    -fx-padding: 1 1 1 1;
+    -fx-effect: dropshadow(three-pass-box, #2D639A, 10, 0, 0, 0);
+}
+
 

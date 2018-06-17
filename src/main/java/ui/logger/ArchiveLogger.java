@@ -11,6 +11,8 @@ import java.io.PrintWriter;
 public class ArchiveLogger {
 
     private File logFile;
+    //El ListView del log esta subscripto para observar esta lista
+    //por lo que cada vez que se agrega algo nuevo lo va mostrando.
     private ObservableList<LogEntry> logs;
 
     public ArchiveLogger(File logFile) {
@@ -41,9 +43,13 @@ public class ArchiveLogger {
 
     private void writeEntry(LogEntry log) {
         try(FileWriter fw = new FileWriter(logFile, true)) {
+            //Obtengo un writer de caracteres para mi archivo
             PrintWriter pw = new PrintWriter(fw);
+            //Escribo el log (toString)
             pw.println(log);
+            //Escribo Linea
             pw.println();
+            //Cierro
             pw.close();
         } catch (IOException e) {
             e.printStackTrace();
