@@ -1,4 +1,4 @@
-package ProductionSystem;
+package production.system;
 
 import java.util.HashSet;
 import java.util.Set;

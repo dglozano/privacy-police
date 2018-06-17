@@ -1,7 +1,7 @@
 package ui;
 
-import ProductionSystem.Regla;
-import ProductionSystem.utils.SeleccionRegla;
+import production.system.Regla;
+import production.system.SeleccionRegla;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,9 +14,8 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import ui.chatutils.ChatMessageCell;
 import ui.chatutils.MessagePOJO;
-import ProductionSystem.utils.ProcesaEntrada;
-import ProductionSystem.utils.ObtencionReglas;
-import ProductionSystem.utils.SeleccionRegla;
+import production.system.ProcesaEntrada;
+import production.system.ObtencionReglas;
 
 import java.net.URL;
 import java.util.ArrayList;

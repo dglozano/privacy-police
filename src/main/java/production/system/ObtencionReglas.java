@@ -1,6 +1,4 @@
-package ProductionSystem.utils;
-
-import ProductionSystem.Regla;
+package production.system;
 
 import java.util.ArrayList;
 import java.util.List;
