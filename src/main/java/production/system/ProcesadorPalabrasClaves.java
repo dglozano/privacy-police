@@ -87,6 +87,7 @@ public class ProcesadorPalabrasClaves {
         mapaSinonimos.put("PAPA", "ALLEGADO");
         mapaSinonimos.put("PROGENITOR", "ALLEGADO");
         mapaSinonimos.put("PROGENITORES", "ALLEGADO");
+        mapaSinonimos.put("PADRES", "ALLEGADO");
         mapaSinonimos.put("ABUELO", "ALLEGADO");
         mapaSinonimos.put("ABUELA", "ALLEGADO");
         mapaSinonimos.put("ABUELOS", "ALLEGADO");
@@ -161,6 +162,8 @@ public class ProcesadorPalabrasClaves {
         mapaSinonimos.put("ESTUDIAS", "ESCUELA");
         mapaSinonimos.put("ESTUDIASTE", "ESCUELA");
         mapaSinonimos.put("ESTUDIAN", "ESCUELA");
+        mapaSinonimos.put("CLASE", "ESCUELA");
+        mapaSinonimos.put("CLASES", "ESCUELA");
 
         mapaSinonimos.put("PROFESOR", "PROFESOR");
         mapaSinonimos.put("PROFESORES", "PROFESOR");
@@ -207,6 +210,8 @@ public class ProcesadorPalabrasClaves {
         mapaSinonimos.put("MONEDAS", "DINERO");
         mapaSinonimos.put("BILLETE", "DINERO");
         mapaSinonimos.put("BILLETES", "DINERO");
+        mapaSinonimos.put("ALCANCIA", "DINERO");
+        mapaSinonimos.put("ALCANCIAS", "DINERO");
 
         mapaSinonimos.put("JOYA", "JOYA");
         mapaSinonimos.put("JOYAS", "JOYA");
@@ -232,6 +237,8 @@ public class ProcesadorPalabrasClaves {
         mapaSinonimos.put("SORTIJAS", "JOYA");
         mapaSinonimos.put("GARGANTILLA", "JOYA");
         mapaSinonimos.put("GARGANTILLAS", "JOYA");
+        mapaSinonimos.put("JOYERIA", "JOYA");
+        mapaSinonimos.put("JOYERIAS", "JOYA");
 
         mapaSinonimos.put("TRABAJO", "TRABAJO");
         mapaSinonimos.put("TRABAJOS", "TRABAJO");

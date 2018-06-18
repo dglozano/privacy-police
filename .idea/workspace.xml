@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e0fd7aec-7c66-4f1f-842f-9719613d6a38" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/modules/privacypolice_test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/privacypolice_test.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/production/system/MemoriaDeProduccion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/production/system/MemoriaDeProduccion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/production/system/ProcesadorPalabrasClaves.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/production/system/ProcesadorPalabrasClaves.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -83,10 +83,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
+            <state relative-caret-position="227">
               <caret line="33" column="45" selection-start-line="33" selection-start-column="45" selection-end-line="33" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -100,8 +100,8 @@
       <file leaf-file-name="ProcesadorPalabrasClaves.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/production/system/ProcesadorPalabrasClaves.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3782">
-              <caret line="27" column="50" lean-forward="true" selection-start-line="27" selection-start-column="50" selection-end-line="27" selection-end-column="50" />
+            <state relative-caret-position="1445">
+              <caret line="89" column="48" lean-forward="true" selection-start-line="89" selection-start-column="48" selection-end-line="89" selection-end-column="48" />
               <folding>
                 <element signature="e#2731#2747#0" expanded="true" />
               </folding>
@@ -112,7 +112,7 @@
       <file leaf-file-name="SistemaDeProduccion.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/production/system/SistemaDeProduccion.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-283">
+            <state relative-caret-position="485">
               <caret line="112" column="67" selection-start-line="112" selection-start-column="67" selection-end-line="112" selection-end-column="67" />
               <folding>
                 <element signature="e#6166#6167#0" expanded="true" />
@@ -124,11 +124,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MemoriaDeProduccion.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MemoriaDeProduccion.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/production/system/MemoriaDeProduccion.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="7" column="42" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
+            <state relative-caret-position="417">
+              <caret line="50" selection-start-line="50" selection-end-line="50" />
             </state>
           </provider>
         </entry>
@@ -527,7 +527,6 @@
         <option value="$PROJECT_DIR$/src/main/java/production/system/Regla.java" />
         <option value="$PROJECT_DIR$/src/main/java/production/system/criteria/NoDuplication.java" />
         <option value="$PROJECT_DIR$/src/main/java/production/system/SistemaDeProducciones.java" />
-        <option value="$PROJECT_DIR$/src/main/java/production/system/MemoriaDeProduccion.java" />
         <option value="$PROJECT_DIR$/src/main/java/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/ui/chat/MessageData.java" />
         <option value="$PROJECT_DIR$/src/main/resources/fxml/LogItemCell.fxml" />
@@ -541,6 +540,7 @@
         <option value="$PROJECT_DIR$/src/main/resources/fxml/ChatFXML.fxml" />
         <option value="$PROJECT_DIR$/src/main/resources/css/Styles.css" />
         <option value="$PROJECT_DIR$/src/main/java/production/system/ProcesadorPalabrasClaves.java" />
+        <option value="$PROJECT_DIR$/src/main/java/production/system/MemoriaDeProduccion.java" />
       </list>
     </option>
   </component>
@@ -976,6 +976,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
           <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <folding>
+            <element signature="imports" />
+            <element signature="e#318#325#0" />
+            <element signature="e#937#938#0" />
+            <element signature="e#976#977#0" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1122,16 +1128,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/production/system/MemoriaDeProduccion.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="7" column="42" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/production/system/SistemaDeProduccion.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-283">
+        <state relative-caret-position="485">
           <caret line="112" column="67" selection-start-line="112" selection-start-column="67" selection-end-line="112" selection-end-column="67" />
           <folding>
             <element signature="e#6166#6167#0" expanded="true" />
@@ -1142,25 +1141,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/production/system/ProcesadorPalabrasClaves.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3782">
-          <caret line="27" column="50" lean-forward="true" selection-start-line="27" selection-start-column="50" selection-end-line="27" selection-end-column="50" />
-          <folding>
-            <element signature="e#2731#2747#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
+        <state relative-caret-position="227">
           <caret line="33" column="45" selection-start-line="33" selection-start-column="45" selection-end-line="33" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#468#469#0" expanded="true" />
             <element signature="e#496#497#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/production/system/ProcesadorPalabrasClaves.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1445">
+          <caret line="89" column="48" lean-forward="true" selection-start-line="89" selection-start-column="48" selection-end-line="89" selection-end-column="48" />
+          <folding>
+            <element signature="e#2731#2747#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/production/system/MemoriaDeProduccion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="417">
+          <caret line="50" selection-start-line="50" selection-end-line="50" />
         </state>
       </provider>
     </entry>
