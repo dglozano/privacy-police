@@ -4,6 +4,9 @@ import javafx.beans.binding.Bindings;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
+import javafx.scene.layout.Background;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 
 public class LogEntryCell extends ListCell<LogEntry> {
 
@@ -20,6 +23,9 @@ public class LogEntryCell extends ListCell<LogEntry> {
             setGraphic(null);
         } else {
             label.setText(logEntry.toString());
+            if(logEntry.isFirstLog()) {
+                label.setFont(Font.font("Montserrat-Black", FontWeight.BOLD,14.0));
+            }
             setGraphic(label);
         }
     }

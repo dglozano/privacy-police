@@ -40,6 +40,7 @@ public class SistemaDeProduccion {
         LogEntry logPalabrasClaves = new LogEntry();
         logPalabrasClaves.writeTitleLine("Preprocesado");
         logPalabrasClaves.writeLine("Frase original: " + fraseDelCarToy);
+        logPalabrasClaves.markAsFirstLog();
 
         //Preproceso la frase y obtengo las palabras claves (Memoria de Trabajo)
         ProcesadorPalabrasClaves ppc = new ProcesadorPalabrasClaves();
@@ -141,6 +142,8 @@ public class SistemaDeProduccion {
         }
 
         reglaSeleccionada = (reglasActivas.isEmpty()) ? null : reglasActivas.get(0);
+
+        reglasUsadas.add(reglaSeleccionada);
 
         logConflictos.writeLine("Regla elegida: " + reglaSeleccionada.toString());
         logger.addLog(logConflictos);

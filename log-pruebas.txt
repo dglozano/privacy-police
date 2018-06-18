@@ -1,0 +1,125 @@
+[Mon, 18 Jun 2018 02:35:34]
+Iniciando simulador...
+
+[Mon, 18 Jun 2018 02:35:34]
+#### Reglas #### 
+
+[1] PREGUNTA NOMBRE  => Sugerir no contestar
+[2] ALLEGADO NOMBRE  => Grabar la charla
+[3] PREGUNTA ALLEGADO NOMBRE  => Llamar a los padres
+[4] PREGUNTA ALLEGADO NOMBRE  => Sugerir contestar con información ficticia
+[5] PREGUNTA ALLEGADO NOMBRE  => Sugerir no contestar
+[6] PREGUNTA EDAD  => Sugerir contestar 'No me acuerdo'
+[7] PREGUNTA EDAD  => Sugerir contestar 'No se'
+[8] NACIMIENTO VIVIENDA  => Sugerir apagar SmartToy
+[9] PREGUNTA ESCUELA  => Sugerir contestar 'No se'
+[10] PREGUNTA ESCUELA  => Sugerir no contestar
+[11] PREGUNTA PROFESOR  => Sugerir contestar con información ficticia
+[12] PREGUNTA ESCUELA PROFESOR  => Sugerir contestar con información ficticia
+[13] PREGUNTA ALLEGADO BANCO TRABAJO  => Alertar a los padres y sugerir apagar SmarToy
+[14] DINERO  => Alertar a los padres y sugerir apagar SmarToy
+[15] ALLEGADO DINERO  => Alertar a los padres y sugerir apagar SmarToy
+[16] PREGUNTA ALLEGADO JOYA  => Alertar a los padres y sugerir apagar SmarToy
+[17] ESCUELA ALLEGADO JOYA  => Alertar a los padres y sugerir apagar SmarToy
+[18] ALLEGADO NOMBRE JOYA  => Alertar a los padres y sugerir apagar SmarToy
+[19] PREGUNTA TRABAJO  => Sugerir contestar con información ficticia
+[20] PREGUNTA VIVIENDA  => Sugerir no contestar
+[21] PREGUNTA VIVIENDA  => Grabar la charla
+[22] PREGUNTA VIVIENDA  => Sugerir contestar con información ficticia
+[23] VIVIENDA  => Grabar la charla
+[24] ALLEGADO VIVIENDA  => Grabar la charla
+[25] PREGUNTA VACACIONES EDAD VIVIENDA  => Llamar a los padres
+[26] LICENCIA ALLEGADO  => Sugerir ignorar SmartToy
+[27] PREGUNTA ESCUELA ACTIVIDAD  => Sugerir contestar con información ficticia
+[28] PASATIEMPO  => Sugerir no contestar
+
+[Mon, 18 Jun 2018 02:35:34]
+#### Criterias #### 
+
+No duplication
+Priority
+Novelty
+Specificity
+Random
+
+[Mon, 18 Jun 2018 02:35:36]
+#### Preprocesado #### 
+
+Frase original: sadf
+No se encontraron palabras claves en la frase.
+
+[Mon, 18 Jun 2018 02:35:40]
+#### Preprocesado #### 
+
+Frase original: donde vivis ?
+Palabras claves: [PREGUNTA, VIVIENDA]
+
+[Mon, 18 Jun 2018 02:35:40]
+#### Reglas activas #### 
+
+[20] PREGUNTA VIVIENDA  => Sugerir no contestar
+[21] PREGUNTA VIVIENDA  => Grabar la charla
+[22] PREGUNTA VIVIENDA  => Sugerir contestar con información ficticia
+
+[Mon, 18 Jun 2018 02:35:40]
+
+Resolucion conflictos
+Reglas en Conflicto: 
+
+[20] PREGUNTA VIVIENDA  => Sugerir no contestar
+[21] PREGUNTA VIVIENDA  => Grabar la charla
+[22] PREGUNTA VIVIENDA  => Sugerir contestar con información ficticia
+Aplica criteria <No duplication>
+Reglas en Conflicto: 
+
+[20] PREGUNTA VIVIENDA  => Sugerir no contestar
+[21] PREGUNTA VIVIENDA  => Grabar la charla
+[22] PREGUNTA VIVIENDA  => Sugerir contestar con información ficticia
+Aplica criteria <Priority>
+Reglas en Conflicto: 
+
+[20] PREGUNTA VIVIENDA  => Sugerir no contestar
+Regla elegida: [20] PREGUNTA VIVIENDA  => Sugerir no contestar
+
+[Mon, 18 Jun 2018 02:35:40]
+#### Accion elegida #### 
+
+Sugerir no contestar
+
+[Mon, 18 Jun 2018 02:35:45]
+#### Preprocesado #### 
+
+Frase original: donde vivis?
+Palabras claves: [PREGUNTA, VIVIENDA]
+
+[Mon, 18 Jun 2018 02:35:45]
+#### Reglas activas #### 
+
+[20] PREGUNTA VIVIENDA  => Sugerir no contestar
+[21] PREGUNTA VIVIENDA  => Grabar la charla
+[22] PREGUNTA VIVIENDA  => Sugerir contestar con información ficticia
+
+[Mon, 18 Jun 2018 02:35:45]
+
+Resolucion conflictos
+Reglas en Conflicto: 
+
+[20] PREGUNTA VIVIENDA  => Sugerir no contestar
+[21] PREGUNTA VIVIENDA  => Grabar la charla
+[22] PREGUNTA VIVIENDA  => Sugerir contestar con información ficticia
+Aplica criteria <No duplication>
+Reglas en Conflicto: 
+
+[21] PREGUNTA VIVIENDA  => Grabar la charla
+[22] PREGUNTA VIVIENDA  => Sugerir contestar con información ficticia
+Aplica criteria <Priority>
+Reglas en Conflicto: 
+
+[21] PREGUNTA VIVIENDA  => Grabar la charla
+Regla elegida: [21] PREGUNTA VIVIENDA  => Grabar la charla
+
+[Mon, 18 Jun 2018 02:35:45]
+#### Accion elegida #### 
+
+Grabar la charla
+
